@@ -1,0 +1,58 @@
+<!-- <h1>USER TABLE</h1> -->
+<%= render '/shared/title', title: "New Comment Page" %>
+<h1><% @users.first.name %></h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Text</th>
+            <th colspan="3"></th>
+        </tr>
+    <tbody>
+        <% @users.each do |user| %>
+        <tr>
+            <td><%= user.name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.age %></td>
+            <td><%= user.bio %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<h1>New Comment</h1>
+
+<%= form_for @user do |f| %>
+
+    <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control col-sm-3', placeholder: 'Jane' %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control col-sm-3', placeholder: 'Jane@gmail.com' %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :age %>
+        <%= f.text_field :age, class: 'form-control col-sm-3', placeholder: '21' %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :bio %>
+        <%= f.text_field :bio, class: 'form-control col-sm-3', placeholder: 'I am a person who...' %>
+    </div>
+
+    <br></br>
+
+    <div class="actions">
+        <%= f.submit class: 'btn btn-danger' %>
+    </div>
+    
+    <br></br>
+    
+<% end %>
